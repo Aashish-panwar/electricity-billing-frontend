@@ -1,0 +1,59 @@
+/* ===========================
+   Layout Wrapper
+=========================== */
+
+.layout-wrapper{
+
+  min-height:100vh;
+
+  background:#f4f7fb;
+
+}
+
+/* ===========================
+   Main Content
+=========================== */
+
+.main-content{
+
+  margin-left:260px;
+
+  margin-top:70px;
+
+  padding:25px;
+
+  min-height:calc(100vh - 130px);
+
+  background:#f4f7fb;
+
+  transition:all .3s ease;
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width:991px){
+
+.main-content{
+
+    margin-left:0;
+
+    padding:18px;
+
+}
+
+}
+
+@media (max-width:576px){
+
+.main-content{
+
+    margin-top:65px;
+
+    padding:15px;
+
+}
+
+}

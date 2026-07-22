@@ -1,0 +1,202 @@
+<div class="container-fluid"
+     *ngIf="consumer">
+
+
+  <div class="card shadow">
+
+
+    <div class="card-header bg-primary text-white d-flex justify-content-between">
+
+
+      <h4 class="mb-0">
+
+        Consumer Details
+
+      </h4>
+
+
+
+      <span
+        class="badge bg-success"
+        *ngIf="consumer.active">
+
+        Active
+
+      </span>
+
+
+      <span
+        class="badge bg-danger"
+        *ngIf="!consumer.active">
+
+        Inactive
+
+      </span>
+
+
+    </div>
+
+
+
+
+    <div class="card-body">
+
+
+      <div class="row">
+
+
+        <div class="col-md-6 mb-3">
+
+          <strong>
+            Consumer Number:
+          </strong>
+
+          {{consumer.consumerNumber}}
+
+        </div>
+
+
+
+
+        <div class="col-md-6 mb-3">
+
+          <strong>
+            Name:
+          </strong>
+
+          {{consumer.fullName}}
+
+        </div>
+
+
+
+
+        <div class="col-md-6 mb-3">
+
+          <strong>
+            Mobile:
+          </strong>
+
+          {{consumer.mobileNumber}}
+
+        </div>
+
+
+
+
+        <div class="col-md-6 mb-3">
+
+          <strong>
+            Email:
+          </strong>
+
+          {{consumer.email}}
+
+        </div>
+
+
+
+
+        <div class="col-md-12 mb-3">
+
+          <strong>
+            Address:
+          </strong>
+
+          {{consumer.address}}
+
+        </div>
+
+
+
+
+        <div class="col-md-4 mb-3">
+
+          <strong>
+            City:
+          </strong>
+
+          {{consumer.city}}
+
+        </div>
+
+
+
+
+        <div class="col-md-4 mb-3">
+
+          <strong>
+            State:
+          </strong>
+
+          {{consumer.state}}
+
+        </div>
+
+
+
+
+        <div class="col-md-4 mb-3">
+
+          <strong>
+            Pin Code:
+          </strong>
+
+          {{consumer.pinCode}}
+
+        </div>
+
+
+
+
+        <div class="col-md-6 mb-3">
+
+          <strong>
+            Consumer Type:
+          </strong>
+
+          {{consumer.consumerType}}
+
+        </div>
+
+
+
+
+        <div class="col-md-6 mb-3">
+
+          <strong>
+            User ID:
+          </strong>
+
+          {{consumer.userId}}
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+      <button
+        class="btn btn-secondary"
+        routerLink="/consumers">
+
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back
+
+
+      </button>
+
+
+
+    </div>
+
+
+  </div>
+
+
+</div>

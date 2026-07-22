@@ -1,0 +1,35 @@
+.container {
+  max-width: 850px;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+}
+
+.card-header {
+  border-radius: 12px 12px 0 0;
+  padding: 16px 20px;
+}
+
+.card-header h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.form-control {
+  border-radius: 8px;
+}
+
+textarea {
+  resize: none;
+}
+
+.btn {
+  min-width: 130px;
+}

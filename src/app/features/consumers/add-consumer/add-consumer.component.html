@@ -1,0 +1,292 @@
+<div class="container py-4">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-primary text-white py-3">
+
+            <h4 class="mb-0">
+                <i class="fa-solid fa-user-plus me-2"></i>
+                Add Consumer
+            </h4>
+
+        </div>
+
+        <div class="card-body p-4">
+
+            <form
+                [formGroup]="consumerForm"
+                (ngSubmit)="saveConsumer()">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Consumer Number
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input
+                            class="form-control"
+                            formControlName="consumerNumber">
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('consumerNumber')?.touched && consumerForm.get('consumerNumber')?.invalid">
+
+                            Consumer Number is required.
+
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Full Name
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input
+                            class="form-control"
+                            formControlName="fullName">
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('fullName')?.touched && consumerForm.get('fullName')?.invalid">
+
+                            Full Name is required.
+
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Mobile Number
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input
+                            class="form-control"
+                            formControlName="mobileNumber">
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('mobileNumber')?.touched && consumerForm.get('mobileNumber')?.invalid">
+
+                            Enter valid 10 digit mobile number.
+
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Email
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            formControlName="email">
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('email')?.touched && consumerForm.get('email')?.invalid">
+
+                            Enter valid email.
+
+                        </small>
+
+                    </div>
+
+                    <div class="col-12">
+
+                        <label class="form-label">
+                            Address
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <textarea
+                            rows="3"
+                            class="form-control"
+                            formControlName="address"></textarea>
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('address')?.touched && consumerForm.get('address')?.invalid">
+
+                            Address is required.
+
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            City
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input
+                            class="form-control"
+                            formControlName="city">
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('city')?.touched && consumerForm.get('city')?.invalid">
+
+                            City is required.
+
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            State
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input
+                            class="form-control"
+                            formControlName="state">
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('state')?.touched && consumerForm.get('state')?.invalid">
+
+                            State is required.
+
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Pin Code
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input
+                            class="form-control"
+                            formControlName="pinCode">
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('pinCode')?.touched && consumerForm.get('pinCode')?.invalid">
+
+                            Enter valid 6 digit PIN code.
+
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Consumer Type
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <select
+                            class="form-select"
+                            formControlName="consumerType">
+
+                            <option value="">Select Consumer Type</option>
+
+                            <option
+                                *ngFor="let type of consumerTypes"
+                                [value]="type">
+
+                                {{ type }}
+
+                            </option>
+
+                        </select>
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('consumerType')?.touched && consumerForm.get('consumerType')?.invalid">
+
+                            Consumer Type is required.
+
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            User ID
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            formControlName="userId">
+
+                        <small
+                            class="text-danger"
+                            *ngIf="consumerForm.get('userId')?.touched && consumerForm.get('userId')?.invalid">
+
+                            User ID is required.
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <hr class="my-4">
+
+                <div class="d-flex justify-content-end">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary me-2"
+                        routerLink="/consumers"
+                        [disabled]="loading">
+
+                        <i class="fa-solid fa-arrow-left me-1"></i>
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                        [disabled]="consumerForm.invalid || loading">
+
+                        <span
+                            *ngIf="loading"
+                            class="spinner-border spinner-border-sm me-2">
+                        </span>
+
+                        <i
+                            *ngIf="!loading"
+                            class="fa-solid fa-floppy-disk me-1">
+                        </i>
+
+                        {{ loading ? 'Saving...' : 'Save Consumer' }}
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

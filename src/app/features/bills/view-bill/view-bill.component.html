@@ -1,0 +1,147 @@
+<div class="container mt-4" *ngIf="bill">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h4>Bill Details</h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Bill Number</strong>
+
+                    <p>{{bill.billNumber}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Consumer</strong>
+
+                    <p>{{bill.consumerName}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Meter Number</strong>
+
+                    <p>{{bill.meterNumber}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Bill Date</strong>
+
+                    <p>{{bill.billDate}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Due Date</strong>
+
+                    <p>{{bill.dueDate}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Status</strong>
+
+                    <p>
+
+                        <span
+                            class="badge"
+                            [ngClass]="{
+                              'bg-success': bill.status==='PAID',
+                              'bg-warning text-dark': bill.status==='GENERATED',
+                              'bg-danger': bill.status==='OVERDUE'
+                            }">
+
+                            {{bill.status}}
+
+                        </span>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h5>Charges</h5>
+
+            <table class="table table-bordered">
+
+                <tr>
+
+                    <th>Energy Charge</th>
+
+                    <td>₹ {{bill.energyCharge}}</td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Fixed Charge</th>
+
+                    <td>₹ {{bill.fixedCharge}}</td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Fuel Surcharge</th>
+
+                    <td>₹ {{bill.fuelSurcharge}}</td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Electricity Duty</th>
+
+                    <td>₹ {{bill.electricityDuty}}</td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Late Fee</th>
+
+                    <td>₹ {{bill.lateFee}}</td>
+
+                </tr>
+
+                <tr class="table-primary">
+
+                    <th>Total Amount</th>
+
+                    <th>₹ {{bill.totalAmount}}</th>
+
+                </tr>
+
+            </table>
+
+            <button
+                class="btn btn-secondary"
+                routerLink="/bills">
+
+                Back
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

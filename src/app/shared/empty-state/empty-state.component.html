@@ -1,0 +1,28 @@
+<div class="empty-state">
+
+    <i class="{{ icon }}"></i>
+
+    <h4>
+
+        {{ title }}
+
+    </h4>
+
+    <p>
+
+        {{ message }}
+
+    </p>
+
+    <a
+        *ngIf="buttonText"
+        class="btn btn-primary"
+        [routerLink]="buttonLink">
+
+        <i class="fa-solid fa-plus me-2"></i>
+
+        {{ buttonText }}
+
+    </a>
+
+</div>

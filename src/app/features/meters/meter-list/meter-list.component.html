@@ -1,0 +1,163 @@
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+
+<div
+  class="container-fluid"
+  *ngIf="!loading">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h2>Meter Management</h2>
+
+    <button
+      class="btn btn-primary"
+      (click)="addMeter()">
+
+      <i class="fa-solid fa-plus me-2"></i>
+      Add Meter
+
+    </button>
+
+  </div>
+
+  <mat-form-field appearance="outline" class="w-100 mb-3">
+
+    <mat-label>Search Meter</mat-label>
+
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Search Meter Number, Manufacturer, Model, Consumer">
+
+  </mat-form-field>
+
+  <div
+    class="table-responsive"
+    *ngIf="dataSource.data.length > 0">
+
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      class="mat-elevation-z8 w-100">
+
+      <!-- Meter Number -->
+      <ng-container matColumnDef="meterNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Meter No
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.meterNumber }}
+        </td>
+      </ng-container>
+
+      <!-- Manufacturer -->
+      <ng-container matColumnDef="manufacturer">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Manufacturer
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.manufacturer }}
+        </td>
+      </ng-container>
+
+      <!-- Model -->
+      <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Model
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.model }}
+        </td>
+      </ng-container>
+
+      <!-- Status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Status
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.status }}
+        </td>
+      </ng-container>
+
+      <!-- Reading -->
+      <ng-container matColumnDef="currentReading">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Reading
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.currentReading }}
+        </td>
+      </ng-container>
+
+      <!-- Consumer -->
+      <ng-container matColumnDef="consumerName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Consumer
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.consumerName }}
+        </td>
+      </ng-container>
+
+      <!-- Action -->
+      <ng-container matColumnDef="action">
+
+        <th mat-header-cell *matHeaderCellDef>
+          Action
+        </th>
+
+        <td mat-cell *matCellDef="let row">
+
+          <button
+            class="btn btn-info btn-sm me-2"
+            (click)="viewMeter(row.id!)">
+
+            <i class="fa-solid fa-eye"></i>
+
+          </button>
+
+          <button
+            class="btn btn-warning btn-sm me-2"
+            (click)="editMeter(row.id!)">
+
+            <i class="fa-solid fa-pen"></i>
+
+          </button>
+
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="deleteMeter(row.id!)">
+
+            <i class="fa-solid fa-trash"></i>
+
+          </button>
+
+        </td>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+  </div>
+
+  <app-empty-state
+    *ngIf="dataSource.data.length === 0"
+    icon="fa-solid fa-gauge-high"
+    title="No Meters Found"
+    message="There are no electricity meters available."
+    buttonText="Add Meter"
+    buttonLink="/meters/add">
+  </app-empty-state>
+
+  <mat-paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[5,10,20,50]"
+    showFirstLastButtons>
+  </mat-paginator>
+
+</div>

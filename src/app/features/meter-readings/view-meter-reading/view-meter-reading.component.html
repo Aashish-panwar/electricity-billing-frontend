@@ -1,0 +1,89 @@
+<div class="container mt-4">
+
+
+<div class="card shadow"
+*ngIf="reading">
+
+
+<div class="card-header bg-info text-white">
+
+<h4>
+Meter Reading Details
+</h4>
+
+</div>
+
+
+<div class="card-body">
+
+
+<p>
+<strong>Meter Number:</strong>
+{{reading.meterNumber}}
+</p>
+
+
+<p>
+<strong>Previous Reading:</strong>
+{{reading.previousReading}}
+</p>
+
+
+<p>
+<strong>Current Reading:</strong>
+{{reading.currentReading}}
+</p>
+
+
+<p>
+<strong>Units Consumed:</strong>
+{{reading.unitsConsumed}}
+</p>
+
+
+<p>
+<strong>Billing Month:</strong>
+{{reading.billingMonth}}
+</p>
+
+
+<p>
+<strong>Billing Year:</strong>
+{{reading.billingYear}}
+</p>
+
+
+<p>
+<strong>Reading Date:</strong>
+{{reading.readingDate}}
+</p>
+
+
+<p>
+<strong>Status:</strong>
+{{reading.status}}
+</p>
+
+
+<p>
+<strong>Remarks:</strong>
+{{reading.remarks}}
+</p>
+
+
+<button
+class="btn btn-secondary"
+(click)="back()">
+
+Back
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>

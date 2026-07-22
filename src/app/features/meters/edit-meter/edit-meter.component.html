@@ -1,0 +1,179 @@
+<div class="container-fluid">
+
+  <div class="card shadow-lg border-0">
+
+    <div class="card-header bg-warning text-dark">
+
+      <h4 class="mb-0">
+        <i class="fa-solid fa-pen-to-square me-2"></i>
+        Edit Meter
+      </h4>
+
+    </div>
+
+    <div class="card-body">
+
+      <form
+        [formGroup]="meterForm"
+        (ngSubmit)="updateMeter()">
+
+        <div class="row">
+
+          <!-- Meter Number -->
+
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+              Meter Number
+            </label>
+
+            <input
+              class="form-control"
+              formControlName="meterNumber"
+              readonly>
+
+          </div>
+
+          <!-- Manufacturer -->
+
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+              Manufacturer <span class="text-danger">*</span>
+            </label>
+
+            <input
+              class="form-control"
+              formControlName="manufacturer">
+
+            <small
+              class="text-danger"
+              *ngIf="
+                meterForm.get('manufacturer')?.touched &&
+                meterForm.get('manufacturer')?.invalid">
+
+              Manufacturer is required.
+
+            </small>
+
+          </div>
+
+          <!-- Model -->
+
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+              Model <span class="text-danger">*</span>
+            </label>
+
+            <input
+              class="form-control"
+              formControlName="model">
+
+            <small
+              class="text-danger"
+              *ngIf="
+                meterForm.get('model')?.touched &&
+                meterForm.get('model')?.invalid">
+
+              Model is required.
+
+            </small>
+
+          </div>
+
+          <!-- Installation Year -->
+
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+              Installation Year <span class="text-danger">*</span>
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              formControlName="installationYear">
+
+          </div>
+
+          <!-- Status -->
+
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+              Status <span class="text-danger">*</span>
+            </label>
+
+            <select
+              class="form-select"
+              formControlName="status">
+
+              <option value="ACTIVE">
+                ACTIVE
+              </option>
+
+              <option value="INACTIVE">
+                INACTIVE
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- Current Reading -->
+
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+              Current Reading <span class="text-danger">*</span>
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              formControlName="currentReading">
+
+          </div>
+
+        </div>
+
+        <div class="mt-4">
+
+          <button
+            type="submit"
+            class="btn btn-success me-2"
+            [disabled]="loading">
+
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm me-2">
+            </span>
+
+            <i
+              *ngIf="!loading"
+              class="fa-solid fa-floppy-disk me-2">
+            </i>
+
+            {{ loading ? 'Updating...' : 'Update Meter' }}
+
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            routerLink="/meters">
+
+            Cancel
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

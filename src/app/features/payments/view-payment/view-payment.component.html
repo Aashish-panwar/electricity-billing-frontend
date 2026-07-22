@@ -1,0 +1,110 @@
+<div class="container mt-4" *ngIf="payment">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h4>Payment Details</h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Payment Number</strong>
+
+                    <p>{{payment.paymentNumber}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Bill Number</strong>
+
+                    <p>{{payment.billNumber}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Consumer</strong>
+
+                    <p>{{payment.consumerName}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Amount</strong>
+
+                    <p>₹ {{payment.amount}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Payment Method</strong>
+
+                    <p>{{payment.paymentMethod}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Status</strong>
+
+                    <p>
+
+                        <span
+                            class="badge bg-success">
+
+                            {{payment.status}}
+
+                        </span>
+
+                    </p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Payment Date</strong>
+
+                    <p>{{payment.paymentDate}}</p>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Transaction Id</strong>
+
+                    <p>{{payment.transactionId}}</p>
+
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+
+                <strong>Remarks</strong>
+
+                <p>{{payment.remarks}}</p>
+
+            </div>
+
+            <button
+                class="btn btn-secondary"
+                routerLink="/payments">
+
+                Back
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

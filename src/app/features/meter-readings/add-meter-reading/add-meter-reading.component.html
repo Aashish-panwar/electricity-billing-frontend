@@ -1,0 +1,204 @@
+<div class="container-fluid">
+
+  <div class="card shadow-lg border-0">
+
+    <div class="card-header bg-primary text-white">
+
+      <h4 class="mb-0">
+
+        <i class="fa-solid fa-book me-2"></i>
+
+        Add Meter Reading
+
+      </h4>
+
+    </div>
+
+    <div class="card-body">
+
+      <form
+        [formGroup]="readingForm"
+        (ngSubmit)="saveReading()">
+
+        <div class="row">
+
+          <!-- Meter -->
+
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+
+              Meter <span class="text-danger">*</span>
+
+            </label>
+
+            <select
+              class="form-select"
+              formControlName="meterId">
+
+              <option [ngValue]="null">
+
+                Select Meter
+
+              </option>
+
+              <option
+                *ngFor="let meter of meters"
+                [ngValue]="meter.id">
+
+                {{meter.meterNumber}} - {{meter.consumerName}}
+
+              </option>
+
+            </select>
+
+            <small
+              class="text-danger"
+              *ngIf="
+              readingForm.get('meterId')?.touched &&
+              readingForm.get('meterId')?.invalid">
+
+              Meter is required.
+
+            </small>
+
+          </div>
+
+          <!-- Current Reading -->
+
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+
+              Current Reading <span class="text-danger">*</span>
+
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              formControlName="currentReading">
+
+            <small
+              class="text-danger"
+              *ngIf="
+              readingForm.get('currentReading')?.touched &&
+              readingForm.get('currentReading')?.invalid">
+
+              Current Reading is required.
+
+            </small>
+
+          </div>
+
+          <!-- Billing Month -->
+
+          <div class="col-md-4 mb-3">
+
+            <label class="form-label">
+
+              Billing Month <span class="text-danger">*</span>
+
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              formControlName="billingMonth">
+
+          </div>
+
+          <!-- Billing Year -->
+
+          <div class="col-md-4 mb-3">
+
+            <label class="form-label">
+
+              Billing Year <span class="text-danger">*</span>
+
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              formControlName="billingYear">
+
+          </div>
+
+          <!-- Reading Date -->
+
+          <div class="col-md-4 mb-3">
+
+            <label class="form-label">
+
+              Reading Date <span class="text-danger">*</span>
+
+            </label>
+
+            <input
+              type="date"
+              class="form-control"
+              formControlName="readingDate">
+
+          </div>
+
+          <!-- Remarks -->
+
+          <div class="col-12 mb-4">
+
+            <label class="form-label">
+
+              Remarks
+
+            </label>
+
+            <textarea
+              rows="4"
+              class="form-control"
+              formControlName="remarks"
+              placeholder="Enter remarks (optional)">
+            </textarea>
+
+          </div>
+
+        </div>
+
+        <div class="mt-3">
+
+          <button
+            type="submit"
+            class="btn btn-success me-2"
+            [disabled]="loading">
+
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm me-2">
+            </span>
+
+            <i
+              *ngIf="!loading"
+              class="fa-solid fa-floppy-disk me-2">
+            </i>
+
+            {{ loading ? 'Saving...' : 'Save Reading' }}
+
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            routerLink="/meter-readings">
+
+            Cancel
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

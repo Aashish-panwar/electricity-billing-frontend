@@ -1,0 +1,121 @@
+<div class="container-fluid py-4">
+
+  <div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+      <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-primary text-white py-3">
+
+          <h4 class="mb-0">
+
+            <i class="fa-solid fa-file-invoice-dollar me-2"></i>
+
+            Generate Electricity Bill
+
+          </h4>
+
+        </div>
+
+        <div class="card-body p-4">
+
+          <form
+            [formGroup]="billForm"
+            (ngSubmit)="generateBill()">
+
+            <div class="row">
+
+              <div class="col-12 mb-4">
+
+                <label class="form-label fw-semibold">
+
+                  Meter Reading
+
+                  <span class="text-danger">*</span>
+
+                </label>
+
+                <select
+                  class="form-select"
+                  formControlName="meterReadingId"
+                  [class.is-invalid]="billForm.get('meterReadingId')?.invalid && billForm.get('meterReadingId')?.touched">
+
+                  <option [ngValue]="null">
+
+                    Select Meter Reading
+
+                  </option>
+
+                  <option
+                    *ngFor="let reading of readings"
+                    [value]="reading.id">
+
+                    {{reading.meterNumber}}
+                    |
+                    {{reading.billingMonth}}/{{reading.billingYear}}
+                    |
+                    {{reading.unitsConsumed}} Units
+
+                  </option>
+
+                </select>
+
+                <div class="invalid-feedback">
+
+                  Please select a meter reading.
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Information Card -->
+
+            <div class="alert alert-info d-flex align-items-center mb-4">
+
+              <i class="fa-solid fa-circle-info me-2"></i>
+
+              Bill amount will be calculated automatically based on the
+              selected meter reading and the applicable tariff.
+
+            </div>
+
+            <div class="d-flex justify-content-end">
+
+              <button
+                type="submit"
+                class="btn btn-success me-2"
+                [disabled]="billForm.invalid">
+
+                <i class="fa-solid fa-file-circle-plus me-1"></i>
+
+                Generate Bill
+
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                routerLink="/bills">
+
+                <i class="fa-solid fa-arrow-left me-1"></i>
+
+                Cancel
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

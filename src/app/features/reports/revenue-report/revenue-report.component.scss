@@ -1,0 +1,99 @@
+.card{
+
+    border:none;
+
+    border-radius:16px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+}
+
+.stat-card{
+
+    transition:.3s;
+
+    color:#fff;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+
+}
+
+.revenue{
+
+    background:linear-gradient(135deg,#198754,#34c38f);
+
+}
+
+.bills{
+
+    background:linear-gradient(135deg,#0d6efd,#4e8ef7);
+
+}
+
+.payments{
+
+    background:linear-gradient(135deg,#6f42c1,#9b6dff);
+
+}
+
+.pending{
+
+    background:linear-gradient(135deg,#dc3545,#ff6b6b);
+
+}
+
+.stat-icon{
+
+    font-size:42px;
+
+}
+
+.card-body{
+
+    padding:28px;
+
+}
+
+.table th{
+
+    width:35%;
+
+    font-weight:600;
+
+}
+
+.table td{
+
+    font-weight:500;
+
+}
+
+.spinner-border{
+
+    width:3rem;
+
+    height:3rem;
+
+}
+
+@media(max-width:768px){
+
+    .stat-icon{
+
+        font-size:34px;
+
+    }
+
+    h3{
+
+        font-size:24px;
+
+    }
+
+}

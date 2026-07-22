@@ -1,0 +1,211 @@
+<div class="container-fluid py-4">
+
+  <div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+      <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-success text-white py-3">
+
+          <h4 class="mb-0">
+
+            <i class="fa-solid fa-credit-card me-2"></i>
+
+            Make Payment
+
+          </h4>
+
+        </div>
+
+        <div class="card-body p-4">
+
+          <form
+            [formGroup]="paymentForm"
+            (ngSubmit)="savePayment()">
+
+            <div class="row">
+
+              <!-- Bill -->
+
+              <div class="col-md-12 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Select Bill
+
+                  <span class="text-danger">*</span>
+
+                </label>
+
+                <select
+                  class="form-select"
+                  formControlName="billId"
+                  [class.is-invalid]="paymentForm.get('billId')?.invalid && paymentForm.get('billId')?.touched">
+
+                  <option [ngValue]="null">
+
+                    Select Bill
+
+                  </option>
+
+                  <option
+                    *ngFor="let bill of bills"
+                    [value]="bill.id">
+
+                    {{bill.billNumber}}
+                    |
+                    ₹ {{bill.totalAmount}}
+
+                  </option>
+
+                </select>
+
+                <div class="invalid-feedback">
+
+                  Please select a bill.
+
+                </div>
+
+              </div>
+
+              <!-- Amount -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Amount (₹)
+
+                  <span class="text-danger">*</span>
+
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="amount"
+                  placeholder="Enter amount"
+                  [class.is-invalid]="paymentForm.get('amount')?.invalid && paymentForm.get('amount')?.touched">
+
+                <div class="invalid-feedback">
+
+                  Amount is required.
+
+                </div>
+
+              </div>
+
+              <!-- Payment Method -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Payment Method
+
+                  <span class="text-danger">*</span>
+
+                </label>
+
+                <select
+                  class="form-select"
+                  formControlName="paymentMethod">
+
+                  <option value="CASH">
+
+                    Cash
+
+                  </option>
+
+                  <option value="UPI">
+
+                    UPI
+
+                  </option>
+
+                  <option value="CARD">
+
+                    Card
+
+                  </option>
+
+                  <option value="NET_BANKING">
+
+                    Net Banking
+
+                  </option>
+
+                </select>
+
+              </div>
+
+              <!-- Remarks -->
+
+              <div class="col-12 mb-4">
+
+                <label class="form-label fw-semibold">
+
+                  Remarks
+
+                </label>
+
+                <textarea
+                  rows="4"
+                  class="form-control"
+                  formControlName="remarks"
+                  placeholder="Enter remarks (optional)">
+                </textarea>
+
+              </div>
+
+            </div>
+
+            <!-- Payment Info -->
+
+            <div class="alert alert-success d-flex align-items-center mb-4">
+
+              <i class="fa-solid fa-circle-info me-2"></i>
+
+              Payment will be securely processed and the selected bill
+              status will automatically change to <strong class="ms-1">PAID</strong>.
+
+            </div>
+
+            <div class="d-flex justify-content-end">
+
+              <button
+                type="submit"
+                class="btn btn-success me-2"
+                [disabled]="paymentForm.invalid">
+
+                <i class="fa-solid fa-money-check-dollar me-1"></i>
+
+                Pay Now
+
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                routerLink="/payments">
+
+                <i class="fa-solid fa-arrow-left me-1"></i>
+
+                Cancel
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

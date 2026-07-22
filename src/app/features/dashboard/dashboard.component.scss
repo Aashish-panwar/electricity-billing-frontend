@@ -1,0 +1,173 @@
+/* ===============================
+   Dashboard
+=================================*/
+
+.container-fluid {
+  padding: 20px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+/* ===============================
+   Heading
+=================================*/
+
+h2 {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* ===============================
+   Statistics Cards
+=================================*/
+
+.card {
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all .3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.15);
+}
+
+.card-body {
+  padding: 22px;
+  text-align: center;
+}
+
+.card-body h5 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  opacity: .95;
+}
+
+.card-body h2 {
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ===============================
+   Gradient Cards
+=================================*/
+
+.text-bg-primary {
+  background: linear-gradient(135deg,#4f46e5,#6366f1)!important;
+}
+
+.text-bg-success {
+  background: linear-gradient(135deg,#16a34a,#22c55e)!important;
+}
+
+.text-bg-warning {
+  background: linear-gradient(135deg,#f59e0b,#fbbf24)!important;
+  color:#fff!important;
+}
+
+.text-bg-danger {
+  background: linear-gradient(135deg,#dc2626,#ef4444)!important;
+}
+
+.text-bg-info {
+  background: linear-gradient(135deg,#0284c7,#38bdf8)!important;
+}
+
+.text-bg-secondary {
+  background: linear-gradient(135deg,#6b7280,#9ca3af)!important;
+}
+
+.text-bg-dark {
+  background: linear-gradient(135deg,#111827,#374151)!important;
+}
+
+/* ===============================
+   Chart Cards
+=================================*/
+
+.card-header {
+  border: none;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 14px 20px;
+}
+
+.card-header h5 {
+  margin: 0;
+}
+
+.card-body canvas {
+  max-height: 350px;
+}
+
+/* ===============================
+   Chart Area
+=================================*/
+
+canvas {
+  width: 100% !important;
+}
+
+/* ===============================
+   Spacing
+=================================*/
+
+.row {
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   Responsive
+=================================*/
+
+@media (max-width:991px){
+
+.card-body h2{
+    font-size:28px;
+}
+
+}
+
+@media (max-width:768px){
+
+.container-fluid{
+    padding:15px;
+}
+
+.card-body{
+    padding:18px;
+}
+
+.card-body h2{
+    font-size:24px;
+}
+
+.card-header{
+    text-align:center;
+}
+
+}
+
+@media (max-width:576px){
+
+h2{
+    font-size:24px;
+}
+
+.card-body h5{
+    font-size:14px;
+}
+
+.card-body h2{
+    font-size:22px;
+}
+
+.card{
+    margin-bottom:15px;
+}
+
+}

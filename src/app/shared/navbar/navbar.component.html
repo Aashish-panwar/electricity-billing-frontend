@@ -1,0 +1,74 @@
+<nav class="navbar">
+
+  <div class="left">
+
+    <div>
+
+      <h4 class="mb-0">
+
+        <i class="fa-solid fa-bolt text-warning me-2"></i>
+
+        Electricity Billing System
+
+      </h4>
+
+      <small class="text-muted">
+
+        Admin Dashboard
+
+      </small>
+
+    </div>
+
+  </div>
+
+  <div class="right">
+
+    <button
+      class="btn btn-light notification me-3">
+
+      <i class="fa-solid fa-bell"></i>
+
+      <span class="notification-dot"></span>
+
+    </button>
+
+    <div class="user-info me-3">
+
+      <div class="avatar">
+
+        <i class="fa-solid fa-user"></i>
+
+      </div>
+
+      <div>
+
+        <div class="fw-semibold">
+
+          {{ email }}
+
+        </div>
+
+        <small class="text-muted">
+
+          {{ role }}
+
+        </small>
+
+      </div>
+
+    </div>
+
+    <button
+      class="btn btn-danger btn-sm"
+      (click)="logout()">
+
+      <i class="fa-solid fa-right-from-bracket me-2"></i>
+
+      Logout
+
+    </button>
+
+  </div>
+
+</nav>

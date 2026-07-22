@@ -1,0 +1,246 @@
+<div class="container-fluid py-4">
+
+  <div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+      <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-warning text-dark py-3">
+
+          <h4 class="mb-0">
+
+            <i class="fa-solid fa-pen-to-square me-2"></i>
+
+            Edit Tariff
+
+          </h4>
+
+        </div>
+
+        <div class="card-body p-4">
+
+          <form
+            [formGroup]="tariffForm"
+            (ngSubmit)="updateTariff()">
+
+            <div class="row">
+
+              <!-- Tariff Name -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Tariff Name
+
+                  <span class="text-danger">*</span>
+
+                </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="tariffName"
+                  placeholder="Enter Tariff Name"
+                  [class.is-invalid]="tariffForm.get('tariffName')?.invalid && tariffForm.get('tariffName')?.touched">
+
+                <div class="invalid-feedback">
+
+                  Tariff Name is required.
+
+                </div>
+
+              </div>
+
+              <!-- Rate -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Rate Per Unit (₹)
+
+                  <span class="text-danger">*</span>
+
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="ratePerUnit"
+                  placeholder="0.00"
+                  [class.is-invalid]="tariffForm.get('ratePerUnit')?.invalid && tariffForm.get('ratePerUnit')?.touched">
+
+                <div class="invalid-feedback">
+
+                  Rate Per Unit is required.
+
+                </div>
+
+              </div>
+
+              <!-- Fixed Charge -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Fixed Charge (₹)
+
+                  <span class="text-danger">*</span>
+
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="fixedCharge"
+                  placeholder="0.00"
+                  [class.is-invalid]="tariffForm.get('fixedCharge')?.invalid && tariffForm.get('fixedCharge')?.touched">
+
+                <div class="invalid-feedback">
+
+                  Fixed Charge is required.
+
+                </div>
+
+              </div>
+
+              <!-- Electricity Duty -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Electricity Duty (%)
+
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="electricityDuty"
+                  placeholder="0">
+
+              </div>
+
+              <!-- Fuel Surcharge -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Fuel Surcharge (₹)
+
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="fuelSurcharge"
+                  placeholder="0">
+
+              </div>
+
+              <!-- Effective From -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Effective From
+
+                  <span class="text-danger">*</span>
+
+                </label>
+
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="effectiveFrom"
+                  [class.is-invalid]="tariffForm.get('effectiveFrom')?.invalid && tariffForm.get('effectiveFrom')?.touched">
+
+                <div class="invalid-feedback">
+
+                  Effective From date is required.
+
+                </div>
+
+              </div>
+
+              <!-- Effective To -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label fw-semibold">
+
+                  Effective To
+
+                </label>
+
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="effectiveTo">
+
+              </div>
+
+              <!-- Description -->
+
+              <div class="col-12 mb-4">
+
+                <label class="form-label fw-semibold">
+
+                  Description
+
+                </label>
+
+                <textarea
+                  rows="4"
+                  class="form-control"
+                  formControlName="description"
+                  placeholder="Enter Tariff Description">
+                </textarea>
+
+              </div>
+
+            </div>
+
+            <div class="d-flex justify-content-end">
+
+              <button
+                type="submit"
+                class="btn btn-warning me-2"
+                [disabled]="tariffForm.invalid">
+
+                <i class="fa-solid fa-floppy-disk me-1"></i>
+
+                Update Tariff
+
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                routerLink="/tariffs">
+
+                <i class="fa-solid fa-arrow-left me-1"></i>
+
+                Cancel
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,85 @@
+<div class="container mt-4">
+
+  <div class="card shadow">
+
+    <div class="card-header bg-info text-white">
+
+      <h4>Tariff Details</h4>
+
+    </div>
+
+    <div class="card-body" *ngIf="tariff">
+
+      <table class="table table-bordered">
+
+        <tr>
+
+          <th width="250">Tariff Name</th>
+
+          <td>{{tariff.tariffName}}</td>
+
+        </tr>
+
+        <tr>
+
+          <th>Rate Per Unit</th>
+
+          <td>{{tariff.ratePerUnit}}</td>
+
+        </tr>
+
+        <tr>
+
+          <th>Fixed Charge</th>
+
+          <td>{{tariff.fixedCharge}}</td>
+
+        </tr>
+
+        <tr>
+
+          <th>Electricity Duty</th>
+
+          <td>{{tariff.electricityDuty}}</td>
+
+        </tr>
+
+        <tr>
+
+          <th>Fuel Surcharge</th>
+
+          <td>{{tariff.fuelSurcharge}}</td>
+
+        </tr>
+
+        <tr>
+
+          <th>Effective From</th>
+
+          <td>{{tariff.effectiveFrom}}</td>
+
+        </tr>
+
+        <tr>
+
+          <th>Effective To</th>
+
+          <td>{{tariff.effectiveTo}}</td>
+
+        </tr>
+
+        <tr>
+
+          <th>Description</th>
+
+          <td>{{tariff.description}}</td>
+
+        </tr>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

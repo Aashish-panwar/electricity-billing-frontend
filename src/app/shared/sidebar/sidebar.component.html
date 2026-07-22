@@ -1,0 +1,128 @@
+<ul>
+
+  <li routerLink="/dashboard" routerLinkActive="active">
+
+    <i class="fa-solid fa-gauge-high"></i>
+
+    <span>Dashboard</span>
+
+  </li>
+
+  <!-- ADMIN -->
+
+  <li
+    *appHasRole="'ROLE_ADMIN'"
+    routerLink="/consumers"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-users"></i>
+
+    <span>Consumers</span>
+
+  </li>
+
+  <li
+    *appHasRole="'ROLE_ADMIN'"
+    routerLink="/tariffs"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-money-bill-wave"></i>
+
+    <span>Tariffs</span>
+
+  </li>
+
+  <li
+    *appHasRole="'ROLE_ADMIN'"
+    routerLink="/reports"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-chart-line"></i>
+
+    <span>Reports</span>
+
+  </li>
+
+  <!-- ADMIN + EMPLOYEE -->
+
+  <li
+    *appHasAnyRole="['ROLE_ADMIN','ROLE_EMPLOYEE']"
+    routerLink="/meters"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-bolt"></i>
+
+    <span>Meters</span>
+
+  </li>
+
+  <li
+    *appHasAnyRole="['ROLE_ADMIN','ROLE_EMPLOYEE']"
+    routerLink="/meter-readings"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-book-open"></i>
+
+    <span>Meter Readings</span>
+
+  </li>
+
+  <li
+    *appHasAnyRole="['ROLE_ADMIN','ROLE_EMPLOYEE']"
+    routerLink="/bills"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-file-invoice-dollar"></i>
+
+    <span>Bills</span>
+
+  </li>
+
+  <li
+    *appHasAnyRole="['ROLE_ADMIN','ROLE_EMPLOYEE']"
+    routerLink="/payments"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-credit-card"></i>
+
+    <span>Payments</span>
+
+  </li>
+
+  <!-- CONSUMER -->
+
+  <li
+    *appHasRole="'ROLE_CONSUMER'"
+    routerLink="/bills"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-file-invoice-dollar"></i>
+
+    <span>My Bills</span>
+
+  </li>
+
+  <li
+    *appHasRole="'ROLE_CONSUMER'"
+    routerLink="/payments"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-credit-card"></i>
+
+    <span>My Payments</span>
+
+  </li>
+
+  <!-- ALL USERS -->
+
+  <li
+    routerLink="/profile"
+    routerLinkActive="active">
+
+    <i class="fa-solid fa-user-circle"></i>
+
+    <span>Profile</span>
+
+  </li>
+
+</ul>

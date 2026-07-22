@@ -1,0 +1,31 @@
+.container {
+  max-width: 900px;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+}
+
+.card-header {
+  border-radius: 12px 12px 0 0;
+}
+
+.card-header h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.table th {
+  width: 260px;
+  background: #f8f9fa;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+.table {
+  margin-bottom: 0;
+}

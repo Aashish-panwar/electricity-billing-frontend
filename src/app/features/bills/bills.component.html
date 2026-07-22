@@ -1,0 +1,162 @@
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h3>Electricity Bills</h3>
+
+        <button
+            class="btn btn-primary"
+            routerLink="/bills/generate">
+
+            <i class="fa-solid fa-plus"></i>
+            Generate Bill
+
+        </button>
+
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>Bill No</th>
+
+                            <th>Consumer</th>
+
+                            <th>Meter</th>
+
+                            <th>Total Amount</th>
+
+                            <th>Bill Date</th>
+
+                            <th>Due Date</th>
+
+                            <th>Status</th>
+
+                            <th width="260">Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngIf="bills.length === 0">
+
+                            <td colspan="8" class="text-center">
+
+                                No Bills Found
+
+                            </td>
+
+                        </tr>
+
+                        <tr *ngFor="let bill of bills">
+
+                            <td>
+
+                                {{ bill.billNumber }}
+
+                            </td>
+
+                            <td>
+
+                                {{ bill.consumerName }}
+
+                            </td>
+
+                            <td>
+
+                                {{ bill.meterNumber }}
+
+                            </td>
+
+                            <td>
+
+                                ₹ {{ bill.totalAmount }}
+
+                            </td>
+
+                            <td>
+
+                                {{ bill.billDate }}
+
+                            </td>
+
+                            <td>
+
+                                {{ bill.dueDate }}
+
+                            </td>
+
+                            <td>
+
+                                <span
+                                    class="badge"
+                                    [ngClass]="{
+                                        'bg-success': bill.status === 'PAID',
+                                        'bg-warning text-dark': bill.status === 'GENERATED',
+                                        'bg-danger': bill.status === 'OVERDUE'
+                                    }">
+
+                                    {{ bill.status }}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn btn-info btn-sm me-2"
+                                    (click)="viewBill(bill.id!)">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                    View
+
+                                </button>
+
+                                <button
+                                    class="btn btn-success btn-sm me-2"
+                                    (click)="downloadBill(bill.id!)">
+
+                                    <i class="fa-solid fa-download"></i>
+
+                                    PDF
+
+                                </button>
+
+                                <button
+                                    class="btn btn-danger btn-sm"
+                                    (click)="deleteBill(bill.id!)">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                    Delete
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
