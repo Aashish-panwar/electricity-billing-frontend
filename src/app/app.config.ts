@@ -10,43 +10,45 @@ import { routes } from './app.routes';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
+import {
+  provideCharts,
+  withDefaultRegisterables
+} from 'ng2-charts';
 
 export const appConfig: ApplicationConfig = {
 
   providers: [
 
-    provideRouter(routes),
+  provideRouter(routes),
 
-    provideAnimations(),
+  provideAnimations(),
 
-    provideHttpClient(
+  provideHttpClient(
 
-      withInterceptors([
+    withInterceptors([
+      authInterceptor,
+      loadingInterceptor,
+      errorInterceptor
+    ])
 
-        authInterceptor,
+  ),
 
-        loadingInterceptor,
+  provideCharts(withDefaultRegisterables()),
 
-        errorInterceptor
+  provideToastr({
 
-      ])
+    positionClass: 'toast-top-right',
 
-    ),
+    timeOut: 3000,
 
-    provideToastr({
+    closeButton: true,
 
-      positionClass: 'toast-top-right',
+    progressBar: true,
 
-      timeOut: 3000,
+    preventDuplicates: true
 
-      closeButton: true,
+  })
 
-      progressBar: true,
-
-      preventDuplicates: true
-
-    })
-
-  ]
+]
 
 };
