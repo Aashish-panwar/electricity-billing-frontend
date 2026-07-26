@@ -202,7 +202,7 @@ export const routes: Routes = [
                 .then(m => m.BillListComponent)
           },
           {
-            path: 'generate/:meterReadingId',
+            path: 'generate',
             loadComponent: () =>
               import('./features/bills/generate-bill/generate-bill.component')
                 .then(m => m.GenerateBillComponent)
