@@ -173,6 +173,44 @@
             </small>
 
           </div>
+          <div class="col-md-12 mb-4">
+
+  <label class="form-label">
+
+    Select Tariff
+    <span class="text-danger">*</span>
+
+  </label>
+
+  <select
+      class="form-select"
+      formControlName="tariffId">
+
+      <option [ngValue]="null">
+        Select Tariff
+      </option>
+
+      <option
+          *ngFor="let tariff of tariffs"
+          [ngValue]="tariff.id">
+
+          {{ tariff.tariffName }}
+          (₹ {{ tariff.ratePerUnit }}/Unit)
+
+      </option>
+
+  </select>
+
+  <small
+      class="text-danger"
+      *ngIf="meterForm.get('tariffId')?.touched &&
+             meterForm.get('tariffId')?.invalid">
+
+      Tariff is required.
+
+  </small>
+
+</div>
 
         </div>
 
