@@ -12,6 +12,9 @@ import { ConsumerService } from '../../../services/consumer.service';
 import { Consumer } from '../../../models/consumer';
 import { AlertService } from '../../../core/services/alert.service';
 import { NotificationService } from '../../../core/services/notification.service';
+import { Tariff } from '../../../models/tariff.model';
+import { TariffService } from '../../../services/tariff.service';
+
 
 @Component({
   selector: 'app-add-meter',
@@ -32,7 +35,9 @@ export class AddMeterComponent implements OnInit {
   private router = inject(Router);
   private alert = inject(AlertService);
   private notification = inject(NotificationService);
-
+  private tariffService = inject(TariffService);
+  
+  tariffs: Tariff[] = [];
 
   consumers: Consumer[] = [];
 
@@ -40,25 +45,31 @@ export class AddMeterComponent implements OnInit {
 
   meterForm = this.fb.group({
 
-    meterNumber: ['', Validators.required],
+  meterNumber: ['', Validators.required],
 
-    manufacturer: ['', Validators.required],
+  manufacturer: ['', Validators.required],
 
-    model: ['', Validators.required],
+  model: ['', Validators.required],
 
-    installationYear: [new Date().getFullYear(), Validators.required],
+  installationYear: [new Date().getFullYear(), Validators.required],
 
-    status: ['ACTIVE', Validators.required],
+  status: ['ACTIVE', Validators.required],
 
-    currentReading: [0, Validators.required],
+  currentReading: [0, Validators.required],
 
-    consumerId: [null, Validators.required]
+  consumerId: [null, Validators.required],
 
-  });
+  tariffId: [null, Validators.required]
+
+});
 
   ngOnInit(): void {
-    this.loadConsumers();
-  }
+
+  this.loadConsumers();
+
+  this.loadTariffs();
+
+}
 
   loadConsumers(): void {
 
@@ -71,6 +82,25 @@ export class AddMeterComponent implements OnInit {
     });
 
   }
+  loadTariffs(): void {
+
+  this.tariffService.getAllTariffs().subscribe({
+
+    next: (data) => {
+
+      this.tariffs = data;
+
+    },
+
+    error: (err) => {
+
+      console.log(err);
+
+    }
+
+  });
+
+}
 
   saveMeter(): void {
 
@@ -119,5 +149,7 @@ export class AddMeterComponent implements OnInit {
       });
 
   }
+
+  
 
 }
