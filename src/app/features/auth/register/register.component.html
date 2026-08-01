@@ -1,1 +1,151 @@
-<p>register works!</p>
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-light">
+
+  <div class="card shadow-lg p-4" style="max-width:500px;width:100%;">
+
+    <div class="text-center mb-4">
+
+      <h2 class="fw-bold text-primary">
+        Electricity Billing System
+      </h2>
+
+      <h4>Create Account</h4>
+
+      <p class="text-muted">
+        Register to continue
+      </p>
+
+    </div>
+
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="register()">
+
+      <!-- Full Name -->
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          Full Name
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          formControlName="fullName"
+          placeholder="Enter full name">
+
+      </div>
+
+      <!-- Email -->
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          Email
+        </label>
+
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Enter email">
+
+      </div>
+
+      <!-- Mobile -->
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          Mobile Number
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          maxlength="10"
+          formControlName="mobileNumber"
+          placeholder="9876543210">
+
+      </div>
+
+      <!-- Password -->
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          Password
+        </label>
+
+        <input
+          [type]="hidePassword ? 'password' : 'text'"
+          class="form-control"
+          formControlName="password"
+          placeholder="Enter password">
+
+      </div>
+
+      <!-- Role -->
+
+      <div class="mb-4">
+
+        <label class="form-label">
+          Role
+        </label>
+
+        <select
+          class="form-select"
+          formControlName="role">
+
+          <option value="ROLE_CONSUMER">
+            Consumer
+          </option>
+
+          <option value="ROLE_EMPLOYEE">
+            Employee
+          </option>
+
+          <option value="ROLE_ADMIN">
+            Admin
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- Register Button -->
+
+      <button
+        class="btn btn-primary w-100"
+        [disabled]="loading">
+
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm me-2">
+        </span>
+
+        {{ loading ? 'Creating Account...' : 'Register' }}
+
+      </button>
+
+      <!-- Login Link -->
+
+      <div class="text-center mt-3">
+
+        Already have an account?
+
+        <a
+          routerLink="/login"
+          class="text-decoration-none">
+
+          Login
+
+        </a>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

@@ -16,7 +16,9 @@ export class AuthService {
 
   private apiUrl = `${environment.apiUrl}/auth`;
 
-
+  // =========================
+  // Login
+  // =========================
 
   login(request: LoginRequest): Observable<AuthResponse> {
 
@@ -27,7 +29,22 @@ export class AuthService {
 
   }
 
+  // =========================
+  // Register
+  // =========================
 
+  register(request: any): Observable<any> {
+
+    return this.http.post(
+      `${this.apiUrl}/register`,
+      request
+    );
+
+  }
+
+  // =========================
+  // Logout
+  // =========================
 
   logout(): void {
 
@@ -37,7 +54,9 @@ export class AuthService {
 
   }
 
-
+  // =========================
+  // Save Login Details
+  // =========================
 
   saveAuth(response: AuthResponse): void {
 
@@ -47,7 +66,9 @@ export class AuthService {
 
   }
 
-
+  // =========================
+  // Get Token
+  // =========================
 
   getToken(): string | null {
 
@@ -55,7 +76,9 @@ export class AuthService {
 
   }
 
-
+  // =========================
+  // Get Role
+  // =========================
 
   getRole(): string | null {
 
@@ -63,7 +86,9 @@ export class AuthService {
 
   }
 
-
+  // =========================
+  // Get Email
+  // =========================
 
   getEmail(): string | null {
 
@@ -71,7 +96,9 @@ export class AuthService {
 
   }
 
-
+  // =========================
+  // Is Logged In
+  // =========================
 
   isLoggedIn(): boolean {
 
