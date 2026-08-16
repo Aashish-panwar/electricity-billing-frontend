@@ -9,6 +9,9 @@ import {
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../../../environments/environment';
+
+declare var Razorpay: any;
 
 import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
 import { LoadingSpinnerComponent } from '../../../shared/loading-spinner/loading-spinner.component';
@@ -201,13 +204,51 @@ export class BillListComponent implements OnInit, AfterViewInit {
   }
 
   payOnline(id: number): void {
-    this.paymentService.createCheckoutSession(id).subscribe({
-        next: (response) => {
-            window.location.href = response.url;
-        },
-        error: () => {
-            this.alert.error('Payment Failed', 'Could not initiate online payment.');
-        }
+    this.loading = true;
+    this.paymentService.createRazorpayOrder(id).subscribe({
+      next: (order) => {
+        this.loading = false;
+        
+        const options = {
+          key: environment.razorpayKeyId,
+          amount: order.amount,
+          currency: order.currency,
+          name: 'Electricity Billing System',
+          description: 'Bill Payment',
+          order_id: order.orderId,
+          handler: (response: any) => {
+            this.loading = true;
+            this.paymentService.verifyRazorpayPayment(id, {
+              razorpayPaymentId: response.razorpay_payment_id,
+              razorpayOrderId: response.razorpay_order_id,
+              razorpaySignature: response.razorpay_signature
+            }).subscribe({
+              next: () => {
+                this.loading = false;
+                this.alert.success('Payment Successful', 'Your bill has been paid.');
+                this.loadBills();
+              },
+              error: () => {
+                this.loading = false;
+                this.alert.error('Verification Failed', 'Payment signature verification failed.');
+              }
+            });
+          },
+          theme: {
+            color: '#3399cc'
+          }
+        };
+        
+        const rzp = new Razorpay(options);
+        rzp.on('payment.failed', (response: any) => {
+          this.alert.error('Payment Failed', response.error.description);
+        });
+        rzp.open();
+      },
+      error: () => {
+        this.loading = false;
+        this.alert.error('Error', 'Could not initiate Razorpay payment.');
+      }
     });
   }
 
