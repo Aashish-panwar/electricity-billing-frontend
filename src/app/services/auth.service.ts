@@ -101,9 +101,22 @@ export class AuthService {
   // =========================
 
   isLoggedIn(): boolean {
-
     return this.getToken() !== null;
-
   }
 
+  forgotPassword(email: string): Observable<string> {
+    return this.http.post<string>(
+      `${this.apiUrl}/forgot-password`,
+      { email },
+      { responseType: 'text' as 'json' }
+    );
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<string> {
+    return this.http.post<string>(
+      `${this.apiUrl}/reset-password`,
+      { token, newPassword },
+      { responseType: 'text' as 'json' }
+    );
+  }
 }
