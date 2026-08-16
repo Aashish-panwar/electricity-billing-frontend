@@ -12,14 +12,15 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { AlertService } from '../../../core/services/alert.service';
 import { NotificationService } from '../../../core/services/notification.service';
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']

@@ -1,0 +1,13 @@
+export interface RegisterRequest {
+
+  fullName: string;
+
+  email: string;
+
+  password: string;
+
+  mobileNumber: string;
+
+  role: string;
+
+}
