@@ -49,18 +49,6 @@ export class PaymentService {
 
   }
 
-  createRazorpayOrder(billId: number): Observable<{orderId: string, amount: string, currency: string}> {
-    return this.http.post<{orderId: string, amount: string, currency: string}>(
-      `${this.apiUrl}/create-razorpay-order?billId=${billId}`,
-      {}
-    );
-  }
 
-  verifyRazorpayPayment(billId: number, paymentData: any): Observable<Payment> {
-    return this.http.post<Payment>(
-      `${this.apiUrl}/verify-razorpay-payment?billId=${billId}`,
-      paymentData
-    );
-  }
 
 }
