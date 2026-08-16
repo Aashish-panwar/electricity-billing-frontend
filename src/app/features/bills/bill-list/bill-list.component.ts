@@ -43,6 +43,7 @@ import {
 
 import { Bill } from '../../../models/bill.model';
 import { BillService } from '../../../services/bill.service';
+import { PaymentService } from '../../../services/payment.service';
 import { AlertService } from '../../../core/services/alert.service';
 import { ExportService } from '../../../services/export.service';
 
@@ -67,6 +68,7 @@ import { ExportService } from '../../../services/export.service';
 export class BillListComponent implements OnInit, AfterViewInit {
 
   private billService = inject(BillService);
+  private paymentService = inject(PaymentService);
   private router = inject(Router);
   private alert = inject(AlertService);
   private exportService = inject(ExportService);
@@ -196,6 +198,17 @@ export class BillListComponent implements OnInit, AfterViewInit {
 
     this.router.navigate(['/bills/generate']);
 
+  }
+
+  payOnline(id: number): void {
+    this.paymentService.createCheckoutSession(id).subscribe({
+        next: (response) => {
+            window.location.href = response.url;
+        },
+        error: () => {
+            this.alert.error('Payment Failed', 'Could not initiate online payment.');
+        }
+    });
   }
 
   viewBill(id: number): void {

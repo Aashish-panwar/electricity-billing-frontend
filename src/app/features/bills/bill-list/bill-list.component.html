@@ -216,6 +216,15 @@
             </button>
 
             <button
+              *ngIf="bill.status !== 'PAID'"
+              class="btn btn-primary btn-sm me-2"
+              (click)="payOnline(bill.id!)">
+              <i class="fa-brands fa-stripe"></i>
+              Pay Online
+
+            </button>
+
+            <button
               class="btn btn-danger btn-sm"
               (click)="deleteBill(bill.id!)">
 

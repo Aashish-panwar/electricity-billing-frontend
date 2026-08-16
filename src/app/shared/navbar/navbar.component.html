@@ -24,14 +24,32 @@
 
   <div class="right">
 
-    <button
-      class="btn btn-light notification me-3">
-
-      <i class="fa-solid fa-bell"></i>
-
-      <span class="notification-dot"></span>
-
-    </button>
+    <div class="dropdown me-3" *ngIf="role === 'ROLE_CONSUMER'">
+      <button
+        class="btn btn-light notification dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <i class="fa-solid fa-bell"></i>
+        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill" *ngIf="unreadCount > 0">
+          {{ unreadCount }}
+        </span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end p-2 shadow" style="width: 300px; max-height: 400px; overflow-y: auto;">
+        <li><h6 class="dropdown-header">Notifications</h6></li>
+        <li *ngIf="notifications.length === 0">
+          <span class="dropdown-item text-muted">No unread notifications</span>
+        </li>
+        <li *ngFor="let n of notifications" class="mb-2 border-bottom pb-2">
+          <div class="d-flex justify-content-between align-items-center px-3">
+            <small class="text-wrap">{{ n.message }}</small>
+            <button class="btn btn-sm btn-outline-success ms-2" (click)="markAsRead(n.id)">
+              <i class="fa-solid fa-check"></i>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
 
     <div class="user-info me-3">
 
