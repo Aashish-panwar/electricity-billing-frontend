@@ -246,6 +246,18 @@ export const routes: Routes = [
             loadComponent: () =>
               import('./features/payments/view-payment/view-payment.component')
                 .then(m => m.ViewPaymentComponent)
+          },
+          {
+            path: 'success',
+            loadComponent: () =>
+              import('./features/payments/payment-success/payment-success.component')
+                .then(m => m.PaymentSuccessComponent)
+          },
+          {
+            path: 'cancel',
+            loadComponent: () =>
+              import('./features/payments/payment-cancel/payment-cancel.component')
+                .then(m => m.PaymentCancelComponent)
           }
         ]
       },

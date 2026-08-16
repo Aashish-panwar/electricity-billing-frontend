@@ -49,4 +49,11 @@ export class PaymentService {
 
   }
 
+  createCheckoutSession(billId: number): Observable<{url: string}> {
+    return this.http.post<{url: string}>(
+      `${this.apiUrl}/create-checkout-session?billId=${billId}`,
+      {}
+    );
+  }
+
 }
