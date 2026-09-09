@@ -54,6 +54,10 @@ export const routes: Routes = [
 
       {
         path: 'dashboard',
+        canActivate: [roleGuard],
+        data: {
+          roles: ['ROLE_ADMIN', 'ROLE_EMPLOYEE']
+        },
         loadComponent: () =>
           import('./features/dashboard/dashboard.component')
             .then(m => m.DashboardComponent)

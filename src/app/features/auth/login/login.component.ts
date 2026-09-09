@@ -78,7 +78,11 @@ export class LoginComponent {
             'Welcome back!'
           );
 
-          this.router.navigate(['/dashboard']);
+          if (response.role === 'ROLE_CONSUMER') {
+            this.router.navigate(['/bills']);
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
 
         },
 

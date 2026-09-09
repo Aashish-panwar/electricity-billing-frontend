@@ -9,7 +9,9 @@
 
   <ul>
 
-  <li routerLink="/dashboard" routerLinkActive="active">
+  <li *appHasAnyRole="['ROLE_ADMIN','ROLE_EMPLOYEE']"
+      routerLink="/dashboard" 
+      routerLinkActive="active">
 
     <i class="fa-solid fa-gauge-high"></i>
 
