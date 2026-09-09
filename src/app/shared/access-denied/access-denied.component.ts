@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-access-denied',
@@ -13,5 +13,14 @@ import { RouterModule } from '@angular/router';
   styleUrl: './access-denied.component.scss'
 })
 export class AccessDeniedComponent {
+  private router = inject(Router);
 
+  goHome() {
+    const role = localStorage.getItem('role');
+    if (role === 'ROLE_CONSUMER') {
+      this.router.navigate(['/bills']);
+    } else {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 }
